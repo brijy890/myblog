@@ -11,9 +11,9 @@
 |
 */
 
-Route::get('/', function () {
-    return view('web.index');
-});
+Route::get('/', [
+	'uses' => 'BlogController@index',
+]);
 
 Route::get('/show', function () {
     return view('web.show');
