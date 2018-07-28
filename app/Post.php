@@ -16,4 +16,19 @@ class Post extends Model
     	}
     	return $imageUrl;
     }
+
+    public function author()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function getDateAttribute($value)
+    {
+        return $this->created_at->diffForHumans();
+    }
+
+    public function scopeLatestFirst()
+    {
+        return $this->orderBy('created_at', 'desc');
+    }
 }
